@@ -1,0 +1,196 @@
+Documentação Completa da PyAI
+Índice
+Introdução
+Instalação
+Sintaxe e Semântica
+Funções e Classes
+Manipulação de Dados
+Modelos de Machine Learning
+Visualização
+Exemplos Práticos
+Introdução
+A PyAI é uma linguagem de programação criada para simplificar o desenvolvimento de modelos de inteligência artificial. Baseada em Python, ela oferece uma sintaxe simplificada e funcionalidades específicas para tarefas de machine learning, como pré-processamento de dados, definição e treinamento de modelos, e visualização de resultados.
+
+Instalação
+Para usar a PyAI, você precisa ter o Python instalado em seu sistema. Além disso, você deve instalar as bibliotecas necessárias:
+
+sh
+Copiar código
+pip install pandas numpy tensorflow scikit-learn imbalanced-learn matplotlib seaborn
+Sintaxe e Semântica
+A PyAI possui uma sintaxe simples e intuitiva, inspirada na linguagem Python. Aqui estão alguns elementos básicos:
+
+Variáveis
+pyai
+Copiar código
+idade = 25
+nome = "João"
+Condicionais
+pyai
+Copiar código
+if idade > 18:
+    print("Maior de idade")
+else:
+    print("Menor de idade")
+Loops
+pyai
+Copiar código
+for i in range(10):
+    print(i)
+pyai
+Copiar código
+while idade < 30:
+    idade += 1
+Funções
+pyai
+Copiar código
+def saudacao(nome):
+    print(f"Olá, {nome}!")
+Classes
+pyai
+Copiar código
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def apresentar(self):
+        print(f"Nome: {self.nome}, Idade: {self.idade}")
+Funções e Classes
+A PyAI permite a definição de funções e classes, assim como Python.
+
+Funções
+pyai
+Copiar código
+def soma(a, b):
+    return a + b
+Classes
+pyai
+Copiar código
+class Animal:
+    def __init__(self, nome, especie):
+        self.nome = nome
+        self.especie = especie
+
+    def falar(self):
+        print(f"{self.nome} está fazendo um som.")
+Manipulação de Dados
+A PyAI possui ferramentas para manipulação e pré-processamento de dados.
+
+Carregamento de Dados
+pyai
+Copiar código
+dados = pyai.load_data("meus_dados.csv")
+Limpeza de Dados
+pyai
+Copiar código
+dados.limpar_nulos()
+Normalização
+pyai
+Copiar código
+dados.normalizar()
+Codificação de Categorias
+pyai
+Copiar código
+dados.codificar_categoricos()
+Engenharia de Características
+pyai
+Copiar código
+dados.criar_caracteristica("idade_binned", pyai.bin("idade", bins=[0, 18, 35, 50, 100]))
+Seleção de Características
+pyai
+Copiar código
+dados = dados.selecionar_caracteristicas(["idade_binned", "salario", "tempo_de_experiencia"])
+Balanceamento de Dados
+pyai
+Copiar código
+dados.balancear(metodo="SMOTE")
+Modelos de Machine Learning
+A PyAI facilita a definição e o treinamento de modelos de machine learning.
+
+Definição de Modelos
+pyai
+Copiar código
+@pyai.model(tipo="rede_neural", camadas=[128, 64, 32])
+def modelo_nn(dados):
+    return dados
+pyai
+Copiar código
+@pyai.model(tipo="svm", kernel="rbf", C=1.0)
+def modelo_svm(dados):
+    return dados
+Treinamento de Modelos
+pyai
+Copiar código
+resultado_nn = modelo_nn.treinar(epocas=10, batch_size=32)
+resultado_svm = modelo_svm.treinar()
+Avaliação de Modelos
+pyai
+Copiar código
+precisao_nn = resultado_nn.validacao_cruzada(folds=5, metrica="accuracy")
+print(f"Precisão do modelo de rede neural: {precisao_nn}%")
+
+precisao_svm = resultado_svm.validacao_cruzada(folds=5, metrica="accuracy")
+print(f"Precisão do modelo de SVM: {precisao_svm}%")
+Visualização
+A PyAI possui ferramentas para visualização de dados e resultados.
+
+Curva de Aprendizado
+pyai
+Copiar código
+resultado_nn.plotar("curva_de_aprendizado")
+Matriz de Confusão
+pyai
+Copiar código
+resultado_svm.plotar("matriz_de_confusao")
+Exemplos Práticos
+Exemplo 1: Carregamento e Pré-processamento de Dados
+pyai
+Copiar código
+import pyai
+
+# Carregando dados
+dados = pyai.load_data("meus_dados.csv")
+
+# Pré-processamento
+dados.limpar_nulos()
+dados.normalizar()
+dados.codificar_categoricos()
+
+# Engenharia de Características
+dados.criar_caracteristica("idade_binned", pyai.bin("idade", bins=[0, 18, 35, 50, 100]))
+
+# Seleção de Características
+dados = dados.selecionar_caracteristicas(["idade_binned", "salario", "tempo_de_experiencia"])
+Exemplo 2: Treinamento de um Modelo de Rede Neural
+pyai
+Copiar código
+@pyai.model(tipo="rede_neural", camadas=[128, 64, 32])
+def modelo_nn(dados):
+    return dados
+
+# Treinando o modelo
+resultado_nn = modelo_nn.treinar(epocas=10, batch_size=32)
+
+# Avaliando o modelo
+precisao_nn = resultado_nn.validacao_cruzada(folds=5, metrica="accuracy")
+print(f"Precisão do modelo de rede neural: {precisao_nn}%")
+
+# Visualizando resultados
+resultado_nn.plotar("curva_de_aprendizado")
+Exemplo 3: Treinamento de um Modelo SVM
+pyai
+Copiar código
+@pyai.model(tipo="svm", kernel="rbf", C=1.0)
+def modelo_svm(dados):
+    return dados
+
+# Treinando o modelo
+resultado_svm = modelo_svm.treinar()
+
+# Avaliando o modelo
+precisao_svm = resultado_svm.validacao_cruzada(folds=5, metrica="accuracy")
+print(f"Precisão do modelo de SVM: {precisao_svm}%")
+
+# Visualizando resultados
+resultado_svm.plotar("matriz_de_confusao")
